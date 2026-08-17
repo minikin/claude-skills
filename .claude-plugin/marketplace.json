@@ -1,0 +1,23 @@
+{
+  "name": "minikin-skills",
+  "description": "A personal collection of Agent Skills for Claude Code",
+  "owner": {
+    "name": "minikin",
+    "url": "https://github.com/minikin"
+  },
+  "plugins": [
+    {
+      "name": "bulletproof-rust-web",
+      "source": "./skills/bulletproof-rust-web",
+      "description": "Architecture and production patterns for Rust web services built with Axum, Tokio, SQLx, and Tower. Layering, domain modeling, error handling, database, HTTP, auth, testing, observability, async pitfalls, plus checklists and project CLAUDE.md templates.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": ["rust", "axum", "sqlx", "tokio", "web", "architecture", "backend"],
+      "author": {
+        "name": "minikin",
+        "url": "https://github.com/minikin"
+      },
+      "homepage": "https://github.com/minikin/claude-skills/tree/main/skills/bulletproof-rust-web"
+    }
+  ]
+}
