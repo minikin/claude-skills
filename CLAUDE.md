@@ -25,7 +25,9 @@ One directory per skill, `kebab-case`, name matches the `name:` field in `SKILL.
 
 Each skill directory is also a valid single-skill plugin: `SKILL.md` sits at its root, with
 no nested `skills/` directory and no `plugin.json`, so Claude Code loads it as one skill.
-Keep it that way, otherwise the marketplace entries stop resolving.
+Keep it that way, otherwise the marketplace entries stop resolving. A skill that ships a hook puts
+it in `hooks/hooks.json` beside `SKILL.md`, which Claude Code discovers in this layout (verified
+for `human-writing` with `claude --plugin-dir`).
 
 ## Distribution
 
@@ -65,7 +67,7 @@ allowed-tools: Read Write Edit Glob Grep Bash(cargo:*)   # optional, narrows too
 Body rules:
 
 - Keep `SKILL.md` under ~200 lines. It is loaded in full whenever the skill triggers.
-- Put everything long in `references/` and link to it with a one-line "read this when…" hint.
+- Put everything long in `references/` and link to it with a one-line "read this when" hint.
   This is progressive disclosure: the model pays for a reference only when it opens it.
 - Write rules as imperatives ("Handlers stay under 20 lines"), not as prose essays.
 - Prefer tables and checklists over narrative. Include real, compiling code, not `todo!()`.
@@ -83,3 +85,4 @@ verbatim copies of upstream prose.
 | Skill                                                        | Purpose                                                                               |
 | ------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
 | [bulletproof-rust-web](skills/bulletproof-rust-web/SKILL.md) | Architecture and production patterns for Rust web services (Axum, Tokio, SQLx, Tower) |
+| [human-writing](skills/human-writing/SKILL.md) | Prose without generated tells, a Markdown checker, and hooks for Markdown writes, commits and `gh` text |

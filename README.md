@@ -12,6 +12,7 @@ here as versioned files that Claude picks up automatically when a task matches.
 | Skill                                                        | What it does                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [bulletproof-rust-web](skills/bulletproof-rust-web/SKILL.md) | Architecture and production patterns for Rust web services with Axum, Tokio, SQLx, and Tower. Layering and the dependency rule, domain modeling with newtypes, error handling, the database layer, HTTP concerns, auth and security, testing, observability and deployment, async pitfalls. Ships checklists for adding endpoints and migrations, reviewing a diff, and `CLAUDE.md` templates to drop into a Rust project. Distilled from [gruberb/bulletproof-rust-web](https://github.com/gruberb/bulletproof-rust-web). |
+| [human-writing](skills/human-writing/SKILL.md) | Technical prose that reads as written by an engineer, not generated. Typography rules, the generated-voice tells with prefer-over rewrites, and `scripts/check.py`. Its PostToolUse hook runs the checker after every Markdown write in the project and hands back em dashes, curly quotes and ellipsis characters. A PreToolUse hook does the same for commit messages and for `gh` PR, issue and release text before they are published. Per-project settings in `.claude/human-writing.json`. |
 
 ## Install
 
@@ -67,7 +68,7 @@ Claude actually opens it.
 2. Write the `description` in the third person and say both **what** the skill does and
    **when** to use it. This text is the only thing Claude sees when deciding whether the
    skill is relevant.
-3. Move anything long into `references/`, with a one-line "read this when…" hint in the
+3. Move anything long into `references/`, with a one-line "read this when" hint in the
    index table.
 4. Add a row to the table above and an entry to `.claude-plugin/marketplace.json`, so the
    skill is installable on its own.

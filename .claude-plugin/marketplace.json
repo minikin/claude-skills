@@ -18,6 +18,19 @@
         "url": "https://github.com/minikin"
       },
       "homepage": "https://github.com/minikin/claude-skills/tree/main/skills/bulletproof-rust-web"
+    },
+    {
+      "name": "human-writing",
+      "source": "./skills/human-writing",
+      "description": "Technical prose that reads as written by an engineer, not generated: typography rules, generated-voice tells with prefer-over rewrites, a Markdown checker, a PostToolUse hook that hands back em dashes, curly quotes and ellipsis characters after every Markdown write, and a PreToolUse hook that checks commit messages and gh PR, issue and release text before they are published.",
+      "version": "1.0.0",
+      "license": "MIT",
+      "keywords": ["writing", "prose", "markdown", "style", "docs"],
+      "author": {
+        "name": "minikin",
+        "url": "https://github.com/minikin"
+      },
+      "homepage": "https://github.com/minikin/claude-skills/tree/main/skills/human-writing"
     }
   ]
 }
