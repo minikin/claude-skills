@@ -27,7 +27,8 @@ Each skill directory is also a valid single-skill plugin: `SKILL.md` sits at its
 no nested `skills/` directory and no `plugin.json`, so Claude Code loads it as one skill.
 Keep it that way, otherwise the marketplace entries stop resolving. A skill that ships a hook puts
 it in `hooks/hooks.json` beside `SKILL.md`, which Claude Code discovers in this layout (verified
-for `human-writing` with `claude --plugin-dir`).
+for `human-writing` with `claude --plugin-dir`). A slash command goes in `commands/<name>.md` beside
+`SKILL.md` and loads as `<skill>:<name>` (verified for `human-writing:humanize`, 2026-10-16).
 
 ## Distribution
 

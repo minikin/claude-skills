@@ -5,10 +5,12 @@ description: >
   Carries the typography rules, the generated-voice tells with prefer-over rewrites, and a
   mechanical checker in scripts/check.py. Use this skill when: (1) drafting or editing a
   README, design doc, report, PR description or any Markdown meant for other people,
-  (2) reviewing prose for machine-written tells, (3) a reader said a text sounds like AI.
+  (2) reviewing prose for machine-written tells, (3) a reader said a text sounds like AI,
+  (4) reviewing someone else's text with an AI-detector score and a check of the code names it
+  cites, through /humanize and scripts/humanize.py.
 license: MIT
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
 ---
 
 # Human writing
@@ -118,6 +120,15 @@ After the checker passes, read once for:
 
 Do not shorten a file merely to look less generated. Keep the exact values, names and evidence.
 The goal is dense technical writing with no filler. Cutting repetition is most of the technique.
+
+## Reviewing a text: /humanize
+
+`scripts/humanize.py <file-or-dir>...` runs `check.py` with tells per 100 words, an AI-detector
+score from `scripts/ai-score.py` (sends the prose to Grammarly, `--offline` skips it), and looks up
+the file paths and identifiers the prose names in the code base (`--repo`, else the git root).
+`--json` is for agents. The `/humanize` command runs it and, with `--full`, hands
+`references/fact-check.md` to an Opus agent that checks each claim against the code. Neither the
+tells count nor the AI score says who wrote a text.
 
 ## Per-project settings
 

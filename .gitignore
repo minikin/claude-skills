@@ -71,3 +71,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+### Python ###
+__pycache__/

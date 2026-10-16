@@ -42,10 +42,16 @@ FILLER = re.compile(
 )
 ADJ = r"(?:simple|clean|robust|readable|maintainable|fast|effective|reliable|safe|correct|secure|efficient|elegant|clear|concise)"
 SLASH_PAIR = re.compile(rf"\b{ADJ}/{ADJ}\b")
+# What AI-text detectors flagged in reviewed comments (2026-10-12): a colon opening a long inventory,
+# a chain of "no X" negatives, and a closing verdict sentence.
+SENTENCE = re.compile(r"[^.!?]+[.!?]?")
+NEGATIVE = re.compile(r"\b(no|nothing|none|neither|nor|never)\b", re.IGNORECASE)
+VERDICT = re.compile(r"^\s*(Neither|None of (?:these|them|the \w+))\b.*\b(defect|problem|issue|concern)\b", re.IGNORECASE)
 FENCE = re.compile(r"^(```|~~~)")
 INLINE_CODE = re.compile(r"`[^`\n]*`")
 ENTITY = re.compile(r"&#?\w+;")
-FRONTMATTER = re.compile(r"\A---\n.*?\n---\n", re.DOTALL)
+# Leading blank lines are allowed: Astro and other static-site loaders accept them before the fence.
+FRONTMATTER = re.compile(r"\A\s*---\n.*?\n---\n", re.DOTALL)
 
 
 def strict_names():
@@ -97,6 +103,18 @@ def check(path, strict):
     for m in OPENERS.finditer(prose):
         number = prose.count("\n", 0, m.start()) + 1
         print(f"{path}:{lines[number - 1][0]}: warning: opener '{m.group()}'")
+    for m in SENTENCE.finditer(prose):
+        sentence = m.group()
+        start = m.start() + len(sentence) - len(sentence.lstrip())
+        number = lines[prose.count("\n", 0, start)][0]
+        head, colon, tail = sentence.partition(":")
+        # A Markdown list after the colon is a list, not an inventory sentence.
+        if colon and tail.count(",") >= 4 and not re.search(r"\n\s*(?:[-*]|\d+\.)\s", tail):
+            print(f"{path}:{number}: warning: inventory after a colon ({tail.count(',') + 1} items)")
+        if len(NEGATIVE.findall(sentence)) >= 3:
+            print(f"{path}:{number}: warning: chain of negatives")
+        if VERDICT.match(sentence):
+            print(f"{path}:{number}: warning: verdict sentence '{sentence.strip()[:60]}'")
     fillers = {}
     for m in FILLER.finditer(prose):
         fillers[m.group().lower()] = fillers.get(m.group().lower(), 0) + 1

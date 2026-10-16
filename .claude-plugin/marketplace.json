@@ -22,8 +22,8 @@
     {
       "name": "human-writing",
       "source": "./skills/human-writing",
-      "description": "Technical prose that reads as written by an engineer, not generated: typography rules, generated-voice tells with prefer-over rewrites, a Markdown checker, a PostToolUse hook that hands back em dashes, curly quotes and ellipsis characters after every Markdown write, and a PreToolUse hook that checks commit messages and gh PR, issue and release text before they are published.",
-      "version": "1.0.0",
+      "description": "Technical prose that reads as written by an engineer, not generated: typography rules, generated-voice tells with prefer-over rewrites, a Markdown checker, a PostToolUse hook that hands back em dashes, curly quotes and ellipsis characters after every Markdown write, and a PreToolUse hook that checks commit messages and gh PR, issue and release text before they are published. Its /humanize command reviews a text with tells per 100 words, an AI-detector score and a lookup of the code names it cites.",
+      "version": "1.1.0",
       "license": "MIT",
       "keywords": ["writing", "prose", "markdown", "style", "docs"],
       "author": {
