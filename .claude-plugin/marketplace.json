@@ -50,7 +50,7 @@
       "name": "rex-orchestrator",
       "source": "./skills/rex-orchestrator",
       "description": "Runs a multi-agent session from a Rex terminal: the session orchestrates Claude Code and Codex sub-agents, each in its own Rex tab and, for parallel work, its own jj workspace. Setup check, briefs over rex send, reading with rex capture, permission prompts, review from the main checkout and workspace clean-up.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "license": "MIT",
       "keywords": [
         "rex",
