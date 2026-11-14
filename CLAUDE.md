@@ -87,3 +87,4 @@ verbatim copies of upstream prose.
 | ------------------------------------------------------------ | ------------------------------------------------------------------------------------- |
 | [bulletproof-rust-web](skills/bulletproof-rust-web/SKILL.md) | Architecture and production patterns for Rust web services (Axum, Tokio, SQLx, Tower) |
 | [human-writing](skills/human-writing/SKILL.md) | Prose without generated tells, a Markdown checker, and hooks for Markdown writes, commits and `gh` text |
+| [rex-orchestrator](skills/rex-orchestrator/SKILL.md) | Orchestrate Claude Code and Codex sub-agents from Rex: one tab per agent, one jj workspace per parallel task |
