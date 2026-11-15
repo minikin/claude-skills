@@ -118,7 +118,9 @@ rex send -s "$REX_SESSION" -b <block> '<brief>' && sleep 0.5 && \
 The `sleep 0.5` matters for Codex: without it the Enter can arrive before the text. Send the
 brief as one line. A long single-line send can lose its beginning in the agent's input box. For any
 brief longer than a few sentences, write it to a file in your scratch directory and send one line:
-`Your brief is in <path>. Read it and follow it.` Every brief contains:
+`Do not rename the Rex session. Your brief is in <path>. Read it and follow it.` The no-rename rule
+goes in that first line, not only in the file: the startup hook tells a new agent to rename the
+session, and it acts on that before it opens the brief. Every brief contains:
 
 - the goal and what done means (the command that must pass)
 - the workspace path and the files in scope
